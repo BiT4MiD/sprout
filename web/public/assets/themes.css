@@ -1,0 +1,658 @@
+/* ============================================================
+   SPROUT — THEME TOKENS  (generated; edit tools/gen_themes.py)
+   ------------------------------------------------------------
+   Every color in the popup, the blocked page and the in-page
+   widgets resolves through the custom properties below.
+
+   The document carries two attributes, set by theme.js:
+     <html data-theme="sprout|midnight|ocean|ember|rose|graphite"
+           data-appearance="light|dark">
+   "System" appearance is resolved to light/dark in JS, so the
+   stylesheet never has to duplicate a prefers-color-scheme block.
+   ============================================================ */
+
+:root {
+  /* Shape & motion are theme-independent. */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  18px;
+  --r-xl:  24px;
+  --r-2xl: 28px;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-back:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --font-ui: "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont,
+             "Helvetica Neue", Roboto, "Noto Sans", Arial, sans-serif;
+  --font-display: "Segoe UI Variable Display", "Segoe UI Semibold", "Segoe UI",
+             -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas,
+             "Liberation Mono", monospace;
+}
+
+/* Legacy aliases kept so older selectors keep resolving. */
+:root {
+  --text:               var(--text-primary);
+  --text-muted:         var(--text-secondary);
+  --text-dim:           var(--text-tertiary);
+  --card-bg:            var(--glass-bg);
+  --card-border:        var(--glass-border);
+  --card-border-glow:   var(--accent-glow);
+}
+
+
+/* ---------- Sprout ---------- */
+:root, [data-theme="sprout"][data-appearance="light"] {
+  --accent-h:             122;
+  --accent-s:             44%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            142;
+  --accent2-s:            48%;
+  --accent2-l:            52%;
+  --neutral-h:            90;
+  --neutral-s:            26%;
+  --accent:               hsl(122, 44%, 42%);
+  --accent-light:         hsl(122, 50%, 33%);
+  --accent-dim:           hsl(122, 37.4%, 55%);
+  --accent-glow:          hsla(122, 44%, 46%, 0.28);
+  --accent-subtle:        hsla(122, 44%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(122, 44%, 45%) 0%, hsl(142, 48%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(122, 44%, 45%) 0%, hsl(142, 48%, 52%) 100%);
+  --bg:                   hsl(90, 23.4%, 98%);
+  --surface-0:            hsl(90, 20.8%, 95.5%);
+  --surface-1:            hsl(90, 18.2%, 92%);
+  --surface-2:            hsla(90, 26%, 22%, 0.04);
+  --surface-3:            hsla(90, 26%, 22%, 0.08);
+  --card:                 hsl(90, 26%, 99.5%);
+  --card-inner:           hsla(90, 26%, 22%, 0.03);
+  --glass-bg:             hsla(90, 26%, 100%, 0.74);
+  --glass-border:         hsla(90, 26%, 22%, 0.09);
+  --glass-border-active:  hsla(90, 26%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(122, 14%, 20%);
+  --text-secondary:       hsl(122, 9%, 42%);
+  --text-tertiary:        hsl(122, 8%, 56%);
+  --text-disabled:        hsl(122, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(90, 26%, 18%, 0.06);
+  --shadow-md:            hsla(90, 26%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="sprout"][data-appearance="dark"] {
+  --accent-h:             122;
+  --accent-s:             52%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            142;
+  --accent2-s:            48%;
+  --accent2-l:            66%;
+  --neutral-h:            90;
+  --neutral-s:            26%;
+  --accent:               hsl(122, 52%, 62%);
+  --accent-light:         hsl(122, 56%, 78%);
+  --accent-dim:           hsl(122, 35.2%, 52%);
+  --accent-glow:          hsla(122, 44%, 62%, 0.36);
+  --accent-subtle:        hsla(122, 44%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(122, 44%, 58%) 0%, hsl(142, 48%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(122, 44%, 58%) 0%, hsl(142, 48%, 66%) 100%);
+  --bg:                   hsl(90, 26%, 7%);
+  --surface-0:            hsl(90, 24.7%, 9%);
+  --surface-1:            hsl(90, 23.4%, 13%);
+  --surface-2:            hsla(90, 31.2%, 80%, 0.07);
+  --surface-3:            hsla(90, 31.2%, 80%, 0.13);
+  --card:                 hsl(90, 23.4%, 11%);
+  --card-inner:           hsla(90, 39.0%, 90%, 0.045);
+  --glass-bg:             hsla(90, 26%, 10%, 0.72);
+  --glass-border:         hsla(90, 52%, 92%, 0.1);
+  --glass-border-active:  hsla(90, 52%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(90, 20%, 96%);
+  --text-secondary:       hsl(90, 13%, 74%);
+  --text-tertiary:        hsl(90, 10%, 54%);
+  --text-disabled:        hsl(90, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- Midnight ---------- */
+[data-theme="midnight"][data-appearance="light"] {
+  --accent-h:             258;
+  --accent-s:             82%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            295;
+  --accent2-s:            78%;
+  --accent2-l:            52%;
+  --neutral-h:            248;
+  --neutral-s:            26%;
+  --accent:               hsl(258, 82%, 42%);
+  --accent-light:         hsl(258, 88%, 33%);
+  --accent-dim:           hsl(258, 69.7%, 55%);
+  --accent-glow:          hsla(258, 82%, 46%, 0.28);
+  --accent-subtle:        hsla(258, 82%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(258, 82%, 45%) 0%, hsl(295, 78%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(258, 82%, 45%) 0%, hsl(295, 78%, 52%) 100%);
+  --bg:                   hsl(248, 23.4%, 98%);
+  --surface-0:            hsl(248, 20.8%, 95.5%);
+  --surface-1:            hsl(248, 18.2%, 92%);
+  --surface-2:            hsla(248, 26%, 22%, 0.04);
+  --surface-3:            hsla(248, 26%, 22%, 0.08);
+  --card:                 hsl(248, 26%, 99.5%);
+  --card-inner:           hsla(248, 26%, 22%, 0.03);
+  --glass-bg:             hsla(248, 26%, 100%, 0.74);
+  --glass-border:         hsla(248, 26%, 22%, 0.09);
+  --glass-border-active:  hsla(248, 26%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(258, 14%, 20%);
+  --text-secondary:       hsl(258, 9%, 42%);
+  --text-tertiary:        hsl(258, 8%, 56%);
+  --text-disabled:        hsl(258, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(248, 26%, 18%, 0.06);
+  --shadow-md:            hsla(248, 26%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="midnight"][data-appearance="dark"] {
+  --accent-h:             258;
+  --accent-s:             90%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            295;
+  --accent2-s:            78%;
+  --accent2-l:            66%;
+  --neutral-h:            248;
+  --neutral-s:            26%;
+  --accent:               hsl(258, 90%, 62%);
+  --accent-light:         hsl(258, 94%, 78%);
+  --accent-dim:           hsl(258, 65.6%, 52%);
+  --accent-glow:          hsla(258, 82%, 62%, 0.36);
+  --accent-subtle:        hsla(258, 82%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(258, 82%, 58%) 0%, hsl(295, 78%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(258, 82%, 58%) 0%, hsl(295, 78%, 66%) 100%);
+  --bg:                   hsl(248, 26%, 7%);
+  --surface-0:            hsl(248, 24.7%, 9%);
+  --surface-1:            hsl(248, 23.4%, 13%);
+  --surface-2:            hsla(248, 31.2%, 80%, 0.07);
+  --surface-3:            hsla(248, 31.2%, 80%, 0.13);
+  --card:                 hsl(248, 23.4%, 11%);
+  --card-inner:           hsla(248, 39.0%, 90%, 0.045);
+  --glass-bg:             hsla(248, 26%, 10%, 0.72);
+  --glass-border:         hsla(248, 52%, 92%, 0.1);
+  --glass-border-active:  hsla(248, 52%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(248, 20%, 96%);
+  --text-secondary:       hsl(248, 13%, 74%);
+  --text-tertiary:        hsl(248, 10%, 54%);
+  --text-disabled:        hsl(248, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- Ocean ---------- */
+[data-theme="ocean"][data-appearance="light"] {
+  --accent-h:             199;
+  --accent-s:             84%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            187;
+  --accent2-s:            76%;
+  --accent2-l:            52%;
+  --neutral-h:            205;
+  --neutral-s:            24%;
+  --accent:               hsl(199, 84%, 42%);
+  --accent-light:         hsl(199, 90%, 33%);
+  --accent-dim:           hsl(199, 71.4%, 55%);
+  --accent-glow:          hsla(199, 84%, 46%, 0.28);
+  --accent-subtle:        hsla(199, 84%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(199, 84%, 45%) 0%, hsl(187, 76%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(199, 84%, 45%) 0%, hsl(187, 76%, 52%) 100%);
+  --bg:                   hsl(205, 21.6%, 98%);
+  --surface-0:            hsl(205, 19.2%, 95.5%);
+  --surface-1:            hsl(205, 16.8%, 92%);
+  --surface-2:            hsla(205, 24%, 22%, 0.04);
+  --surface-3:            hsla(205, 24%, 22%, 0.08);
+  --card:                 hsl(205, 24%, 99.5%);
+  --card-inner:           hsla(205, 24%, 22%, 0.03);
+  --glass-bg:             hsla(205, 24%, 100%, 0.74);
+  --glass-border:         hsla(205, 24%, 22%, 0.09);
+  --glass-border-active:  hsla(205, 24%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(199, 14%, 20%);
+  --text-secondary:       hsl(199, 9%, 42%);
+  --text-tertiary:        hsl(199, 8%, 56%);
+  --text-disabled:        hsl(199, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(205, 24%, 18%, 0.06);
+  --shadow-md:            hsla(205, 24%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="ocean"][data-appearance="dark"] {
+  --accent-h:             199;
+  --accent-s:             92%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            187;
+  --accent2-s:            76%;
+  --accent2-l:            66%;
+  --neutral-h:            205;
+  --neutral-s:            24%;
+  --accent:               hsl(199, 92%, 62%);
+  --accent-light:         hsl(199, 94%, 78%);
+  --accent-dim:           hsl(199, 67.2%, 52%);
+  --accent-glow:          hsla(199, 84%, 62%, 0.36);
+  --accent-subtle:        hsla(199, 84%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(199, 84%, 58%) 0%, hsl(187, 76%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(199, 84%, 58%) 0%, hsl(187, 76%, 66%) 100%);
+  --bg:                   hsl(205, 24%, 7%);
+  --surface-0:            hsl(205, 22.8%, 9%);
+  --surface-1:            hsl(205, 21.6%, 13%);
+  --surface-2:            hsla(205, 28.8%, 80%, 0.07);
+  --surface-3:            hsla(205, 28.8%, 80%, 0.13);
+  --card:                 hsl(205, 21.6%, 11%);
+  --card-inner:           hsla(205, 36.0%, 90%, 0.045);
+  --glass-bg:             hsla(205, 24%, 10%, 0.72);
+  --glass-border:         hsla(205, 48%, 92%, 0.1);
+  --glass-border-active:  hsla(205, 48%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(205, 20%, 96%);
+  --text-secondary:       hsl(205, 13%, 74%);
+  --text-tertiary:        hsl(205, 10%, 54%);
+  --text-disabled:        hsl(205, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- Ember ---------- */
+[data-theme="ember"][data-appearance="light"] {
+  --accent-h:             22;
+  --accent-s:             88%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            38;
+  --accent2-s:            92%;
+  --accent2-l:            52%;
+  --neutral-h:            26;
+  --neutral-s:            26%;
+  --accent:               hsl(22, 88%, 42%);
+  --accent-light:         hsl(22, 90%, 33%);
+  --accent-dim:           hsl(22, 74.8%, 55%);
+  --accent-glow:          hsla(22, 88%, 46%, 0.28);
+  --accent-subtle:        hsla(22, 88%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(22, 88%, 45%) 0%, hsl(38, 92%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(22, 88%, 45%) 0%, hsl(38, 92%, 52%) 100%);
+  --bg:                   hsl(26, 23.4%, 98%);
+  --surface-0:            hsl(26, 20.8%, 95.5%);
+  --surface-1:            hsl(26, 18.2%, 92%);
+  --surface-2:            hsla(26, 26%, 22%, 0.04);
+  --surface-3:            hsla(26, 26%, 22%, 0.08);
+  --card:                 hsl(26, 26%, 99.5%);
+  --card-inner:           hsla(26, 26%, 22%, 0.03);
+  --glass-bg:             hsla(26, 26%, 100%, 0.74);
+  --glass-border:         hsla(26, 26%, 22%, 0.09);
+  --glass-border-active:  hsla(26, 26%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(22, 14%, 20%);
+  --text-secondary:       hsl(22, 9%, 42%);
+  --text-tertiary:        hsl(22, 8%, 56%);
+  --text-disabled:        hsl(22, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(26, 26%, 18%, 0.06);
+  --shadow-md:            hsla(26, 26%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="ember"][data-appearance="dark"] {
+  --accent-h:             22;
+  --accent-s:             92%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            38;
+  --accent2-s:            92%;
+  --accent2-l:            66%;
+  --neutral-h:            26;
+  --neutral-s:            26%;
+  --accent:               hsl(22, 92%, 62%);
+  --accent-light:         hsl(22, 94%, 78%);
+  --accent-dim:           hsl(22, 70.4%, 52%);
+  --accent-glow:          hsla(22, 88%, 62%, 0.36);
+  --accent-subtle:        hsla(22, 88%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(22, 88%, 58%) 0%, hsl(38, 92%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(22, 88%, 58%) 0%, hsl(38, 92%, 66%) 100%);
+  --bg:                   hsl(26, 26%, 7%);
+  --surface-0:            hsl(26, 24.7%, 9%);
+  --surface-1:            hsl(26, 23.4%, 13%);
+  --surface-2:            hsla(26, 31.2%, 80%, 0.07);
+  --surface-3:            hsla(26, 31.2%, 80%, 0.13);
+  --card:                 hsl(26, 23.4%, 11%);
+  --card-inner:           hsla(26, 39.0%, 90%, 0.045);
+  --glass-bg:             hsla(26, 26%, 10%, 0.72);
+  --glass-border:         hsla(26, 52%, 92%, 0.1);
+  --glass-border-active:  hsla(26, 52%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(26, 20%, 96%);
+  --text-secondary:       hsl(26, 13%, 74%);
+  --text-tertiary:        hsl(26, 10%, 54%);
+  --text-disabled:        hsl(26, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- Rose ---------- */
+[data-theme="rose"][data-appearance="light"] {
+  --accent-h:             340;
+  --accent-s:             76%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            310;
+  --accent2-s:            70%;
+  --accent2-l:            52%;
+  --neutral-h:            335;
+  --neutral-s:            20%;
+  --accent:               hsl(340, 76%, 42%);
+  --accent-light:         hsl(340, 82%, 33%);
+  --accent-dim:           hsl(340, 64.6%, 55%);
+  --accent-glow:          hsla(340, 76%, 46%, 0.28);
+  --accent-subtle:        hsla(340, 76%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(340, 76%, 45%) 0%, hsl(310, 70%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(340, 76%, 45%) 0%, hsl(310, 70%, 52%) 100%);
+  --bg:                   hsl(335, 18.0%, 98%);
+  --surface-0:            hsl(335, 16.0%, 95.5%);
+  --surface-1:            hsl(335, 14.0%, 92%);
+  --surface-2:            hsla(335, 20%, 22%, 0.04);
+  --surface-3:            hsla(335, 20%, 22%, 0.08);
+  --card:                 hsl(335, 20%, 99.5%);
+  --card-inner:           hsla(335, 20%, 22%, 0.03);
+  --glass-bg:             hsla(335, 20%, 100%, 0.74);
+  --glass-border:         hsla(335, 20%, 22%, 0.09);
+  --glass-border-active:  hsla(335, 20%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(340, 14%, 20%);
+  --text-secondary:       hsl(340, 9%, 42%);
+  --text-tertiary:        hsl(340, 8%, 56%);
+  --text-disabled:        hsl(340, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(335, 20%, 18%, 0.06);
+  --shadow-md:            hsla(335, 20%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="rose"][data-appearance="dark"] {
+  --accent-h:             340;
+  --accent-s:             84%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            310;
+  --accent2-s:            70%;
+  --accent2-l:            66%;
+  --neutral-h:            335;
+  --neutral-s:            20%;
+  --accent:               hsl(340, 84%, 62%);
+  --accent-light:         hsl(340, 88%, 78%);
+  --accent-dim:           hsl(340, 60.8%, 52%);
+  --accent-glow:          hsla(340, 76%, 62%, 0.36);
+  --accent-subtle:        hsla(340, 76%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(340, 76%, 58%) 0%, hsl(310, 70%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(340, 76%, 58%) 0%, hsl(310, 70%, 66%) 100%);
+  --bg:                   hsl(335, 20%, 7%);
+  --surface-0:            hsl(335, 19.0%, 9%);
+  --surface-1:            hsl(335, 18.0%, 13%);
+  --surface-2:            hsla(335, 24.0%, 80%, 0.07);
+  --surface-3:            hsla(335, 24.0%, 80%, 0.13);
+  --card:                 hsl(335, 18.0%, 11%);
+  --card-inner:           hsla(335, 30.0%, 90%, 0.045);
+  --glass-bg:             hsla(335, 20%, 10%, 0.72);
+  --glass-border:         hsla(335, 40%, 92%, 0.1);
+  --glass-border-active:  hsla(335, 40%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(335, 20%, 96%);
+  --text-secondary:       hsl(335, 13%, 74%);
+  --text-tertiary:        hsl(335, 10%, 54%);
+  --text-disabled:        hsl(335, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- Graphite ---------- */
+[data-theme="graphite"][data-appearance="light"] {
+  --accent-h:             215;
+  --accent-s:             22%;
+  --accent-l:             42%;
+  --accent-l-hi:          54%;
+  --accent-l-lo:          32%;
+  --accent2-h:            215;
+  --accent2-s:            18%;
+  --accent2-l:            52%;
+  --neutral-h:            215;
+  --neutral-s:            14%;
+  --accent:               hsl(215, 22%, 42%);
+  --accent-light:         hsl(215, 28%, 33%);
+  --accent-dim:           hsl(215, 18.7%, 55%);
+  --accent-glow:          hsla(215, 22%, 46%, 0.28);
+  --accent-subtle:        hsla(215, 22%, 46%, 0.11);
+  --accent-grad:          linear-gradient(135deg, hsl(215, 22%, 45%) 0%, hsl(215, 18%, 52%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(215, 22%, 45%) 0%, hsl(215, 18%, 52%) 100%);
+  --bg:                   hsl(215, 12.6%, 98%);
+  --surface-0:            hsl(215, 11.2%, 95.5%);
+  --surface-1:            hsl(215, 9.8%, 92%);
+  --surface-2:            hsla(215, 14%, 22%, 0.04);
+  --surface-3:            hsla(215, 14%, 22%, 0.08);
+  --card:                 hsl(215, 14%, 99.5%);
+  --card-inner:           hsla(215, 14%, 22%, 0.03);
+  --glass-bg:             hsla(215, 14%, 100%, 0.74);
+  --glass-border:         hsla(215, 14%, 22%, 0.09);
+  --glass-border-active:  hsla(215, 14%, 22%, 0.18);
+  --glass-shine:          hsla(0, 0%, 100%, 0.65);
+  --text-primary:         hsl(215, 14%, 20%);
+  --text-secondary:       hsl(215, 9%, 42%);
+  --text-tertiary:        hsl(215, 8%, 56%);
+  --text-disabled:        hsl(215, 7%, 71%);
+  --success:              hsl(152, 58%, 34%);
+  --success-light:        hsl(152, 52%, 28%);
+  --success-glow:         hsla(152, 58%, 40%, 0.28);
+  --success-subtle:       hsla(152, 58%, 40%, 0.11);
+  --success-grad:         linear-gradient(135deg, hsl(150, 60%, 34%) 0%, hsl(165, 58%, 42%) 100%);
+  --danger:               hsl(2, 68%, 48%);
+  --danger-glow:          hsla(2, 68%, 50%, 0.26);
+  --danger-subtle:        hsla(2, 68%, 50%, 0.10);
+  --warning:              hsl(32, 84%, 38%);
+  --warning-subtle:       hsla(32, 90%, 46%, 0.13);
+  --info:                 hsl(205, 78%, 40%);
+  --info-subtle:          hsla(205, 78%, 46%, 0.11);
+  --shadow-sm:            hsla(215, 14%, 18%, 0.06);
+  --shadow-md:            hsla(215, 14%, 18%, 0.1);
+  color-scheme: light;
+}
+[data-theme="graphite"][data-appearance="dark"] {
+  --accent-h:             215;
+  --accent-s:             30%;
+  --accent-l:             64%;
+  --accent-l-hi:          78%;
+  --accent-l-lo:          50%;
+  --accent2-h:            215;
+  --accent2-s:            18%;
+  --accent2-l:            66%;
+  --neutral-h:            215;
+  --neutral-s:            14%;
+  --accent:               hsl(215, 30%, 62%);
+  --accent-light:         hsl(215, 34%, 78%);
+  --accent-dim:           hsl(215, 17.6%, 52%);
+  --accent-glow:          hsla(215, 22%, 62%, 0.36);
+  --accent-subtle:        hsla(215, 22%, 62%, 0.14);
+  --accent-grad:          linear-gradient(135deg, hsl(215, 22%, 58%) 0%, hsl(215, 18%, 66%) 100%);
+  --accent-grad-h:        linear-gradient(90deg, hsl(215, 22%, 58%) 0%, hsl(215, 18%, 66%) 100%);
+  --bg:                   hsl(215, 14%, 7%);
+  --surface-0:            hsl(215, 13.3%, 9%);
+  --surface-1:            hsl(215, 12.6%, 13%);
+  --surface-2:            hsla(215, 16.8%, 80%, 0.07);
+  --surface-3:            hsla(215, 16.8%, 80%, 0.13);
+  --card:                 hsl(215, 12.6%, 11%);
+  --card-inner:           hsla(215, 21.0%, 90%, 0.045);
+  --glass-bg:             hsla(215, 14%, 10%, 0.72);
+  --glass-border:         hsla(215, 28%, 92%, 0.1);
+  --glass-border-active:  hsla(215, 28%, 92%, 0.22);
+  --glass-shine:          hsla(0, 0%, 100%, 0.07);
+  --text-primary:         hsl(215, 20%, 96%);
+  --text-secondary:       hsl(215, 13%, 74%);
+  --text-tertiary:        hsl(215, 10%, 54%);
+  --text-disabled:        hsl(215, 8%, 38%);
+  --success:              hsl(152, 62%, 52%);
+  --success-light:        hsl(152, 60%, 68%);
+  --success-glow:         hsla(152, 62%, 52%, 0.32);
+  --success-subtle:       hsla(152, 62%, 52%, 0.13);
+  --success-grad:         linear-gradient(135deg, hsl(150, 68%, 42%) 0%, hsl(168, 66%, 54%) 100%);
+  --danger:               hsl(2, 86%, 66%);
+  --danger-glow:          hsla(2, 86%, 66%, 0.32);
+  --danger-subtle:        hsla(2, 86%, 66%, 0.13);
+  --warning:              hsl(38, 92%, 60%);
+  --warning-subtle:       hsla(38, 92%, 60%, 0.14);
+  --info:                 hsl(200, 85%, 64%);
+  --info-subtle:          hsla(200, 85%, 64%, 0.13);
+  --shadow-sm:            hsla(0, 0%, 0%, 0.30);
+  --shadow-md:            hsla(0, 0%, 0%, 0.45);
+  color-scheme: dark;
+}
+
+/* Native form controls (checkboxes, radios, range thumbs) follow the theme too. */
+input, select, textarea, progress {
+  accent-color: var(--accent);
+}
+
+/* Respect the user's reduced-motion preference everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

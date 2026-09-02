@@ -1,0 +1,20 @@
+{
+  "name": "sprout-control-centre",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Web dashboard and sync server for the Sprout focus extension. Zero dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning src/index.js",
+    "dev": "node --watch --no-warnings=ExperimentalWarning src/index.js",
+    "migrate": "node --no-warnings=ExperimentalWarning src/db/migrate.js",
+    "seed": "node --no-warnings=ExperimentalWarning src/db/seed.js",
+    "test": "node --no-warnings=ExperimentalWarning --test test/*.test.js",
+    "sync-theme": "node -e \"const f=require('fs');f.copyFileSync('../themes.css','public/assets/themes.css');console.log('themes.css updated from the extension')\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

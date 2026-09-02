@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprout — Control Centre</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/themes.css">
+  <link rel="stylesheet" href="/assets/app.css">
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <div class="auth-card">
+      <div class="brand">
+        <div class="brand-mark">🌱</div>
+        <div class="brand-name">Sprout</div>
+      </div>
+      <p class="auth-sub">Sign in to manage your focus rules, see your full history, and keep every browser in sync.</p>
+
+      <div id="authBanner" class="banner error" hidden></div>
+
+      <!-- Sign in -->
+      <form id="loginForm" autocomplete="on">
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" required autocomplete="username" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-block" id="loginSubmit">Sign in</button>
+        <p class="hint" style="text-align:center; margin-top:14px;">
+          No account yet? <a href="#" id="showSignup">Create one</a>
+        </p>
+      </form>
+
+      <!-- Create account -->
+      <form id="signupForm" hidden autocomplete="on">
+        <div class="field">
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" name="displayName" autocomplete="name" placeholder="Bit">
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" name="email" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" required autocomplete="new-password" minlength="10">
+          <p class="hint">At least 10 characters. A short phrase beats a scrambled word.</p>
+        </div>
+        <button type="submit" class="btn btn-block" id="signupSubmit">Create account</button>
+        <p class="hint" style="text-align:center; margin-top:14px;">
+          Already have one? <a href="#" id="showLogin">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <script src="/assets/api.js"></script>
+  <script src="/assets/auth-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprout — Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/themes.css">
+  <link rel="stylesheet" href="/assets/app.css">
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="sidebar" aria-label="Sections">
+      <div class="brand" style="padding:0 11px 12px;">
+        <div class="brand-mark">🌱</div>
+        <div class="brand-name">Sprout</div>
+      </div>
+
+      <button class="nav-link" data-view="viewOverview" aria-current="page">📊 Overview</button>
+      <button class="nav-link" data-view="viewAnalytics">📈 Analytics</button>
+      <button class="nav-link" data-view="viewSessions">⏱ Session log</button>
+
+      <div class="nav-section">Configure</div>
+      <button class="nav-link" data-view="viewRules">🛡 Sites &amp; rules</button>
+      <button class="nav-link" data-view="viewSchedules">🗓 Schedules</button>
+      <button class="nav-link" data-view="viewFocus">🎯 Focus &amp; goals</button>
+      <button class="nav-link" data-view="viewAI">🤖 AI coach</button>
+      <button class="nav-link" data-view="viewLabs">🧪 Labs</button>
+
+      <div class="nav-section">Account</div>
+      <button class="nav-link" data-view="viewDevices">💻 Devices</button>
+      <button class="nav-link" data-view="viewAppearance">🎨 Appearance</button>
+      <button class="nav-link" data-view="viewAccount">⚙️ Account</button>
+      <button class="nav-link" id="logoutBtn" style="margin-top:auto;">↩ Sign out</button>
+    </nav>
+
+    <main class="main">
+      <div id="appBanner" class="banner error" hidden></div>
+
+      <!-- ============ OVERVIEW ============ -->
+      <section id="viewOverview" class="view active">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Overview</h1>
+            <p class="page-sub" id="overviewSub">Today at a glance.</p>
+          </div>
+          <select id="overviewRange" style="width:150px;">
+            <option value="24h">Last 24 hours</option>
+            <option value="7d" selected>Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+            <option value="year">This year</option>
+            <option value="all">All time</option>
+          </select>
+        </div>
+
+        <div class="grid grid-4" id="statTiles">
+          <div class="card"><div class="stat-label">Focus time</div><div class="stat-value" data-stat="focus">—</div><div class="delta" data-delta="focus"></div></div>
+          <div class="card"><div class="stat-label">Sessions</div><div class="stat-value" data-stat="sessions">—</div><div class="delta" data-delta="sessions"></div></div>
+          <div class="card"><div class="stat-label">Blocks deflected</div><div class="stat-value" data-stat="blocks">—</div><div class="delta" data-delta="blocks"></div></div>
+          <div class="card"><div class="stat-label">Current streak</div><div class="stat-value" data-stat="streak">—</div><div class="delta" data-delta="streak"></div></div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <div class="card-title">Focus consistency <span class="pill" id="heatmapRangeLabel">30 days</span></div>
+          <div id="heatmap"></div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top:14px;">
+          <div class="card">
+            <div class="card-title">Where the time went</div>
+            <div id="categoryChart"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Top domains</div>
+            <div id="topDomains"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ANALYTICS ============ -->
+      <section id="viewAnalytics" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Analytics</h1>
+            <p class="page-sub">The detail the 400&nbsp;px popup could never show.</p>
+          </div>
+          <button class="btn btn-quiet" id="exportBtn">⬇ Export CSV</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">When you actually focus <span class="pill">last 30 days</span></div>
+          <p class="hint" id="hourlyInsight" style="margin-top:0; margin-bottom:14px;">Reading your hours…</p>
+          <div id="hourlyChart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Focus vs distraction over time</div>
+          <div id="trendChart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Every domain <span class="pill" id="domainCount">—</span></div>
+          <div id="domainTable"></div>
+        </div>
+      </section>
+
+      <!-- ============ SESSION LOG ============ -->
+      <section id="viewSessions" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Session log</h1>
+            <p class="page-sub">Every Deep Work sprint, its intention and how it went.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div id="sessionTable"></div>
+        </div>
+      </section>
+
+      <!-- ============ RULES ============ -->
+      <section id="viewRules" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Sites &amp; rules</h1>
+            <p class="page-sub">Guarded sites, soft shields and allow-list entries.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Blocking mode</div>
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="blockMode">Mode</label>
+              <select id="blockMode" data-setting="blockMode">
+                <option value="deep_work">During Deep Work only</option>
+                <option value="always">Always (24/7)</option>
+                <option value="scheduled">Scheduled hours</option>
+                <option value="strict_focus">Strict lock (no hall pass)</option>
+                <option value="zen_redirect">Zen redirect</option>
+                <option value="whitelist">Whitelist only</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="hardcore">Hardcore lock</label>
+              <select id="hardcore" data-setting="hardcore">
+                <option value="false">Off — sessions can be ended early</option>
+                <option value="true">On — a started session cannot be stopped</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Add sites <span class="pill">bulk paste</span></div>
+          <div class="field">
+            <label for="bulkPatterns">One per line, or comma separated</label>
+            <textarea id="bulkPatterns" rows="4" placeholder="reddit.com&#10;news.ycombinator.com&#10;x.com"></textarea>
+            <p class="hint">Domains are normalised, aliases expanded (x.com ↔ twitter.com), and search engines are refused.</p>
+          </div>
+          <button class="btn" id="bulkAddBtn">Add to guarded sites</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Guarded sites <span class="pill" id="ruleCount">—</span></div>
+          <div id="ruleTable"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Soft shields</div>
+          <p class="hint" style="margin-top:0; margin-bottom:12px;">Keep a site usable but strip the parts that pull you in.</p>
+          <div class="grid grid-2" id="shieldToggles">
+            <label><input type="checkbox" data-setting="ytHideShorts"> Hide YouTube Shorts</label>
+            <label><input type="checkbox" data-setting="ytHideComments"> Hide YouTube comments</label>
+            <label><input type="checkbox" data-setting="ytHideRecs"> Hide YouTube recommendations</label>
+            <label><input type="checkbox" data-setting="ytAutoTheater"> Auto theater mode</label>
+            <label><input type="checkbox" data-setting="cleanTwitter"> Clean the X / Twitter feed</label>
+            <label><input type="checkbox" data-setting="cleanReddit"> Clean the Reddit front page</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SCHEDULES ============ -->
+      <section id="viewSchedules" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Schedules</h1>
+            <p class="page-sub">Named windows you can attach to individual rules.</p>
+          </div>
+          <button class="btn" id="newScheduleBtn">+ New schedule</button>
+        </div>
+        <div class="card">
+          <div id="scheduleList"></div>
+        </div>
+      </section>
+
+      <!-- ============ FOCUS & GOALS ============ -->
+      <section id="viewFocus" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Focus &amp; goals</h1>
+            <p class="page-sub">Sprint length, breaks and what counts as a good day.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="grid grid-3">
+            <div class="field">
+              <label for="pomodoro">Sprint length (minutes)</label>
+              <input type="number" id="pomodoro" data-setting="pomodoro" min="1" max="180">
+            </div>
+            <div class="field">
+              <label for="breakMinutes">Break length (minutes)</label>
+              <input type="number" id="breakMinutes" data-setting="breakMinutes" min="1" max="60">
+            </div>
+            <div class="field">
+              <label for="dailyGoalMin">Daily focus goal (minutes)</label>
+              <input type="number" id="dailyGoalMin" data-setting="dailyGoalMin" min="15" max="720">
+            </div>
+          </div>
+          <label><input type="checkbox" data-setting="autoBreak"> Start a break automatically when a sprint ends</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="mindfulPauseGate"> Mindful pause before opening a distracting site</label>
+        </div>
+      </section>
+
+      <!-- ============ AI ============ -->
+      <section id="viewAI" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">AI coach</h1>
+            <p class="page-sub">Optional. Everything works without a key.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label for="apiKey">Gemini API key</label>
+            <input type="password" id="apiKey" placeholder="AIzaSy…" autocomplete="off">
+            <p class="hint">Write-only: once saved, the API never returns it. Stored on your own server, sent only to Google's endpoint. <span id="apiKeyState" class="pill">not set</span></p>
+          </div>
+          <div class="field">
+            <label for="personality">Coaching voice</label>
+            <select id="personality" data-setting="personality">
+              <option value="coach">Encouraging coach</option>
+              <option value="drill_sergeant">Drill sergeant</option>
+              <option value="zen_master">Zen master</option>
+              <option value="data_analyst">Data analyst</option>
+            </select>
+          </div>
+          <button class="btn btn-quiet" id="testKeyBtn">⚡ Test key</button>
+          <button class="btn" id="saveKeyBtn">Save</button>
+        </div>
+        <div class="card">
+          <div class="card-title">Suggested guards</div>
+          <p class="hint" style="margin-top:0">The extension generates these from your own browsing history and syncs the ones you accept. They appear here once a paired browser has run an analysis.</p><div id="aiSuggestions" class="empty"><strong>Nothing suggested yet</strong>Pair a browser and let it watch for a few days.</div>
+        </div>
+      </section>
+
+      <!-- ============ LABS ============ -->
+      <section id="viewLabs" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Labs</h1>
+            <p class="page-sub">Experimental. These moved off the popup to keep it small.</p>
+          </div>
+        </div>
+        <div class="card" id="labsToggles">
+          <label><input type="checkbox" data-setting="betaMusicPlayer"> Focus soundscape player</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="autoMusic"> Start audio automatically with a sprint</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="betaInPageDimmer"> In-page cinema dimmer</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="betaBreakCoach"> Guided break coach</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="betaBadges"> Milestone badges</label>
+          <label style="margin-top:8px;"><input type="checkbox" data-setting="whitelist"> Whitelist mode (block everything except the allow list)</label>
+        </div>
+      </section>
+
+      <!-- ============ DEVICES ============ -->
+      <section id="viewDevices" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Devices</h1>
+            <p class="page-sub">Each browser running the Sprout extension.</p>
+          </div>
+          <button class="btn" id="pairBtn">+ Pair a browser</button>
+        </div>
+
+        <div class="card" id="pairPanel" hidden>
+          <div class="card-title">Enter this code in the extension</div>
+          <div class="pair-code" id="pairCode">————————</div>
+          <p class="hint" style="text-align:center;">Open Sprout → Settings → Connect account. Expires in <span id="pairCountdown">10:00</span>.</p>
+        </div>
+
+        <div class="card">
+          <div id="deviceTable"></div>
+        </div>
+      </section>
+
+      <!-- ============ APPEARANCE ============ -->
+      <section id="viewAppearance" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Appearance</h1>
+            <p class="page-sub">Applies here and in the extension on this browser.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Colour theme</div>
+          <div class="grid grid-3" id="themeGrid"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Light or dark</div>
+          <div id="appearanceSegment" style="display:flex; gap:8px;"></div>
+        </div>
+      </section>
+
+      <!-- ============ ACCOUNT ============ -->
+      <section id="viewAccount" class="view">
+        <div class="page-head">
+          <div>
+            <h1 class="page-title">Account</h1>
+            <p class="page-sub" id="accountEmail">—</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Change password</div>
+          <div class="grid grid-2">
+            <div class="field"><label for="currentPassword">Current password</label><input type="password" id="currentPassword" autocomplete="current-password"></div>
+            <div class="field"><label for="newPassword">New password</label><input type="password" id="newPassword" autocomplete="new-password" minlength="10"></div>
+          </div>
+          <p class="hint">Changing it signs out every other browser. Paired extensions keep working.</p>
+          <button class="btn" id="changePasswordBtn" style="margin-top:10px;">Update password</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Recent activity</div>
+          <div id="auditTable"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Your data</div>
+          <button class="btn btn-quiet" id="exportAllBtn">Download everything (JSON)</button>
+          <button class="btn btn-danger" id="deleteAccountBtn" style="margin-left:8px;">Delete account</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/assets/api.js"></script>
+  <script src="/assets/charts.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
